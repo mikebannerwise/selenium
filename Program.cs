@@ -56,7 +56,7 @@ namespace selenium
                     Console.WriteLine("bad command");
                     }
                 }
-        }
+            }
 
         public void userPrompt(string environment, string browser, string network, string flow)
         {
@@ -68,146 +68,28 @@ namespace selenium
         public void run(string browser, string environment, string network, string flow, string size)
         {
             WebDriver driver;
-            browserInstructions instructions = new browserInstructions();
+            driverInstructions dInstructions = new driverInstructions();
+            browserInstructions bInstructions = new browserInstructions();
             addElements add = new addElements();
             if (browser == "firefox")
             {
-                driver = this.setUpFirefox();
+                driver = dInstructions.setUpFirefox();
             }
             else if (browser == "safari")
             {
-                driver = this.setUpSafari();
+                driver = dInstructions.setUpSafari();
             }
             else
             {
-                driver = this.setUpChrome();
+                driver = dInstructions.setUpChrome();
             }
 
-            instructions.goToCanvas(driver, environment, flow, network, size);
+            bInstructions.goToCanvas(driver, environment, flow, network, size);
             add.addLogo(driver);
             add.addImage(driver);
             add.addText(driver);
-            instructions.editSelectedTextElement(driver);
+            bInstructions.editSelectedTextElement(driver);
             driver.Quit();
-        }
-
-        public string getEnvironment()
-        {
-            string environment;
-            if (Console.ReadLine().EndsWith("client"))
-            {
-                environment = "client";
-            }
-            else if (Console.ReadLine().EndsWith("staging"))
-            {
-                environment = "staging";
-            }
-            else if (Console.ReadLine().EndsWith("testing"))
-            {
-                environment = "testing";
-            }
-            else
-            {
-                environment = "???";
-                Console.WriteLine("unknown environment");
-            }
-            return environment;
-        }
-
-        public string getBrowser(string input)
-        {
-            string browser;
-            if (input.EndsWith("chrome"))
-            {
-                browser = "chrome";
-            }
-            else if (input.EndsWith("firefox") || input.EndsWith("ff"))
-            {
-                browser = "firefox";
-            }
-            else if (input.EndsWith("safari"))
-            {
-                browser = "safari";
-            }
-            else
-            {
-                browser = "???";
-                Console.WriteLine("unknown browser");
-            }
-            return browser;
-        }
-        public string getNetwork()
-        {
-            string input = Console.ReadLine();
-            return input;
-        }
-        public string getFlow()
-        {
-            string flow;
-            if (Console.ReadLine().EndsWith("socialDynamic"))
-            {
-                flow = "socialDynamic";
-            }
-            else if (Console.ReadLine().EndsWith("displayStandard"))
-            {
-                flow = "displayStandard";
-            }
-            else if (Console.ReadLine().EndsWith("displayDynamic"))
-            {
-                flow = "displayDynamic";
-            }
-            else
-            {
-                flow = "???";
-                Console.WriteLine("unknown flow");
-            }
-            return flow;
-        }
-        public string getSize()
-        {
-            string size;
-            if (Console.ReadLine().EndsWith("singleImage"))
-            {
-                size = "singleImage";
-            }
-            else if (Console.ReadLine().EndsWith("carousel"))
-            {
-                size = "carousel";
-            }
-            else if (Console.ReadLine().EndsWith("displayDynamic"))
-            {
-                size = "collection";
-            }
-            else
-            {
-                size = "???";
-                Console.WriteLine("unknown flow");
-            }
-            return size;
-        }
-
-        public ChromeDriver setUpChrome()
-        {
-            browserOptions options = new browserOptions();
-            var ChromeOptions = options.chrome();
-            var driver = new ChromeDriver(ChromeOptions);
-            return driver;
-        }
-
-        public FirefoxDriver setUpFirefox()
-        {
-            browserOptions options = new browserOptions();
-            var FirefoxOptions = options.firefox();
-            var driver = new FirefoxDriver(FirefoxOptions);
-            return driver;
-        }
-
-        public SafariDriver setUpSafari()
-        {
-            browserOptions options = new browserOptions();
-            var SafariOptions = options.safari();
-            var driver = new SafariDriver(SafariOptions);
-            return driver;
         }
     }
 }
