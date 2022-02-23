@@ -24,12 +24,6 @@ namespace selenium
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeout);
             IWebElement element = driver.FindElement(By.Id(id));
-            string one = "1";
-
-            if(one.EndsWith("1") || one.EndsWith("1"))
-            {
-
-            }
             return element;
         }
     }

@@ -364,6 +364,8 @@ namespace selenium
                 case "yielder":
                 xPath="/html/body/div[6]/div/div[2]/div[1]/div/div[52]/h5";
                 break;
+                default:
+                break;
             }
             return xPath;
         }

@@ -10,131 +10,191 @@ namespace selenium
         static void Main(string[] args)
         {
             Program p = new Program();
+            string input = "";
+            string environment = "testing";
             string browser = "chrome";
             string network = "googleads";
             string flow = "displayStandard";
-            string fbAdSize="singleImage";
-            string environment="client";
+            string size = "singleImage";
 
-            p.printSettings(environment, browser,network,flow);
+            while (input != "quit")
+            {
+                p.printSettings(environment, browser, network, flow);
+                p.userPrompt();
+
+                input = Console.ReadLine();
+                if (input.StartsWith("environment"))
+                {
+                    environment = input.Substring(input.IndexOf("=") + 1);
+                }
+                else if (input.StartsWith("browser"))
+                {
+                    browser = input.Substring(input.IndexOf("=") + 1);
+                }
+                else if (input.StartsWith("network"))
+                {
+                    network = input.Substring(input.IndexOf("=") + 1);
+                }
+                else if (input.StartsWith("flow"))
+                {
+                    flow = input.Substring(input.IndexOf("=") + 1);
+                }
+                else if (input.StartsWith("size"))
+                {
+                    size = input.Substring(input.IndexOf("=") + 1);
+                }
+                else if (input == "run")
+                {
+                    p.run(browser, environment, network, flow, size);
+                    break;
+                }
+                else if (input == "quit")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("bad command");
+                    }
+                }
+        }
+
+        public void userPrompt()
+        {
             Console.WriteLine("To update settings, type 'browser=safari', 'network=adlogica', etc");
             Console.WriteLine("To run tests, type 'run'");
-            string input = Console.ReadLine();
-
-            if (input.StartsWith("environment"))
-            {
-                if (input.EndsWith("client"))
-                {
-                    environment="client";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else if(input.EndsWith("staging"))
-                {
-                    environment="staging";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else if(input.EndsWith("testing"))
-                {
-                    environment="testing";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else
-                {
-                    Console.WriteLine("unknown environment");
-                    p.printSettings(environment, browser,network,flow);
-                }
-            }
-            else if (input.StartsWith("browser"))
-            {
-                if (input.EndsWith("chrome"))
-                {
-                    browser="chrome";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else if(input.EndsWith("ff") || input.EndsWith("fox"))
-                {
-                    browser="firefox";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else if(input.EndsWith("safari"))
-                {
-                    browser="safari";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else
-                {
-                    Console.WriteLine("unknown browser");
-                    p.printSettings(environment, browser,network,flow);
-                }
-            }
-            else if (input.StartsWith("network"))
-            {
-                if (input.EndsWith("adlogica"))
-                {
-                    network="adlogica";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else if (input.EndsWith("googleads"))
-                {
-                    network="googleads";
-                    p.printSettings(environment, browser,network,flow);
-                }
-                else
-                {
-                    Console.WriteLine("unknown network");
-                    p.printSettings(environment, browser,network,flow);
-                }
-            }
-            else if (input.StartsWith("flow"))
-            {
-                //
-            }
-            else if(input=="run")
-            {
-                WebDriver driver;
-                browserInstructions instructions = new browserInstructions();
-                addElements add = new addElements();
-                if(browser=="firefox")
-                {
-                    driver = p.setUpFirefox();
-                }
-                else if(browser=="safari")
-                    {
-                    driver = p.setUpSafari();
-                    }
-                else
-                {
-                    driver = p.setUpChrome();
-                }
-
-                Console.WriteLine("goToCanvas"+" "+driver+" "+network+" "+flow+" "+fbAdSize);
-                instructions.goToCanvas(driver, environment, flow, network, fbAdSize);
-                Console.WriteLine("addLogo");
-                add.addLogo(driver);
-                Console.WriteLine("addImage");
-                add.addImage(driver);
-                Console.WriteLine("addText");
-                add.addText(driver);
-                instructions.editSelectedTextElement(driver);
-
-                // instructions.clickPreview(driver);
-                // instructions.downloadZipFromPreview(driver);
-            }
-            else
-            {
-                Console.WriteLine("bad command");
-            }
         }
 
         public void printSettings(string environment, string browser, string network, string flow)
         {
-            Console.WriteLine("Current settings:\nenvironment:"+environment+"   browser:"+browser+"   network:"+network+"   flow:"+flow+"\n");
+            Console.WriteLine("\n\nsettings:\nenvironment:" + environment.ToUpper() + "   browser:" + browser.ToUpper() + "   network:" + network.ToUpper() + "   flow:" + flow.ToUpper() + "\n");
+        }
+
+        public void run(string browser, string environment, string network, string flow, string size)
+        {
+            WebDriver driver;
+            browserInstructions instructions = new browserInstructions();
+            addElements add = new addElements();
+            if (browser == "firefox")
+            {
+                driver = this.setUpFirefox();
+            }
+            else if (browser == "safari")
+            {
+                driver = this.setUpSafari();
+            }
+            else
+            {
+                driver = this.setUpChrome();
+            }
+
+            instructions.goToCanvas(driver, environment, flow, network, size);
+            add.addLogo(driver);
+            add.addImage(driver);
+            add.addText(driver);
+            instructions.editSelectedTextElement(driver);
+            driver.Quit();
+        }
+
+        public string getEnvironment()
+        {
+            string environment;
+            if (Console.ReadLine().EndsWith("client"))
+            {
+                environment = "client";
+            }
+            else if (Console.ReadLine().EndsWith("staging"))
+            {
+                environment = "staging";
+            }
+            else if (Console.ReadLine().EndsWith("testing"))
+            {
+                environment = "testing";
+            }
+            else
+            {
+                environment = "???";
+                Console.WriteLine("unknown environment");
+            }
+            return environment;
+        }
+
+        public string getBrowser(string input)
+        {
+            string browser;
+            if (input.EndsWith("chrome"))
+            {
+                browser = "chrome";
+            }
+            else if (input.EndsWith("firefox") || input.EndsWith("ff"))
+            {
+                browser = "firefox";
+            }
+            else if (input.EndsWith("safari"))
+            {
+                browser = "safari";
+            }
+            else
+            {
+                browser = "???";
+                Console.WriteLine("unknown browser");
+            }
+            return browser;
+        }
+        public string getNetwork()
+        {
+            string input = Console.ReadLine();
+            return input;
+        }
+        public string getFlow()
+        {
+            string flow;
+            if (Console.ReadLine().EndsWith("socialDynamic"))
+            {
+                flow = "socialDynamic";
+            }
+            else if (Console.ReadLine().EndsWith("displayStandard"))
+            {
+                flow = "displayStandard";
+            }
+            else if (Console.ReadLine().EndsWith("displayDynamic"))
+            {
+                flow = "displayDynamic";
+            }
+            else
+            {
+                flow = "???";
+                Console.WriteLine("unknown flow");
+            }
+            return flow;
+        }
+        public string getSize()
+        {
+            string size;
+            if (Console.ReadLine().EndsWith("singleImage"))
+            {
+                size = "singleImage";
+            }
+            else if (Console.ReadLine().EndsWith("carousel"))
+            {
+                size = "carousel";
+            }
+            else if (Console.ReadLine().EndsWith("displayDynamic"))
+            {
+                size = "collection";
+            }
+            else
+            {
+                size = "???";
+                Console.WriteLine("unknown flow");
+            }
+            return size;
         }
 
         public ChromeDriver setUpChrome()
         {
             browserOptions options = new browserOptions();
-            var ChromeOptions=options.chrome();
+            var ChromeOptions = options.chrome();
             var driver = new ChromeDriver(ChromeOptions);
             return driver;
         }
@@ -142,7 +202,7 @@ namespace selenium
         public FirefoxDriver setUpFirefox()
         {
             browserOptions options = new browserOptions();
-            var FirefoxOptions=options.firefox();
+            var FirefoxOptions = options.firefox();
             var driver = new FirefoxDriver(FirefoxOptions);
             return driver;
         }
@@ -150,7 +210,7 @@ namespace selenium
         public SafariDriver setUpSafari()
         {
             browserOptions options = new browserOptions();
-            var SafariOptions=options.safari();
+            var SafariOptions = options.safari();
             var driver = new SafariDriver(SafariOptions);
             return driver;
         }

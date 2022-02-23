@@ -38,7 +38,7 @@ namespace selenium
             IWebElement addElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[1]/i",10);
             instructions.clickElementWhenClickable(driver, addElement);
 
-            IWebElement image=instructions.getElementAfterWaitXP(driver,"/html/body/div[7]/div/div/div[2]/div/h5",10);
+            IWebElement image=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div/div/div[2]/div/h5",10);
             instructions.clickElementWhenClickable(driver, image);
 
             IWebElement dropArea=instructions.getElementAfterWaitID(driver,"ngf-upload-image-browse-files-link",10);
@@ -61,7 +61,7 @@ namespace selenium
             IWebElement addElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[1]/i",10);
             instructions.clickElementWhenClickable(driver, addElement);
 
-            IWebElement textElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[8]/div/div/div[3]/div/h5",10);
+            IWebElement textElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div/div/div[3]/div/h5",10);
             instructions.clickElementWhenClickable(driver, textElement);
 
             IWebElement chooseGoogleFont=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/button[2]",10);
