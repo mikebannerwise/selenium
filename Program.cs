@@ -1,7 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Safari;
 
 namespace selenium
 {
@@ -71,7 +68,7 @@ namespace selenium
             driverInstructions dInstructions = new driverInstructions();
             browserInstructions bInstructions = new browserInstructions();
             addElements add = new addElements();
-            if (browser == "firefox")
+            if (browser == "firefox" || browser == "ff")
             {
                 driver = dInstructions.setUpFirefox();
             }

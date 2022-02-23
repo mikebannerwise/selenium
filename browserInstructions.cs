@@ -6,7 +6,7 @@ namespace selenium
     class browserInstructions
     {
         driverInstructions instructions = new driverInstructions();
-        public void login(WebDriver driver, string environment)
+        private void login(WebDriver driver, string environment)
         {
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://"+environment+".bannerwise.io");
