@@ -19,8 +19,7 @@ namespace selenium
 
             while (input != "quit")
             {
-                p.printSettings(environment, browser, network, flow);
-                p.userPrompt();
+                p.userPrompt(environment, browser, network, flow);
 
                 input = Console.ReadLine();
                 if (input.StartsWith("environment"))
@@ -59,14 +58,10 @@ namespace selenium
                 }
         }
 
-        public void userPrompt()
+        public void userPrompt(string environment, string browser, string network, string flow)
         {
             Console.WriteLine("To update settings, type 'browser=safari', 'network=adlogica', etc");
             Console.WriteLine("To run tests, type 'run'");
-        }
-
-        public void printSettings(string environment, string browser, string network, string flow)
-        {
             Console.WriteLine("\n\nsettings:\nenvironment:" + environment.ToUpper() + "   browser:" + browser.ToUpper() + "   network:" + network.ToUpper() + "   flow:" + flow.ToUpper() + "\n");
         }
 
