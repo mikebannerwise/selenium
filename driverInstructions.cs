@@ -34,7 +34,7 @@ namespace selenium
         
         public void clickElementWhenClickable(WebDriver driver, IWebElement element)
         {
-            WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30)); 
+            WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5)); 
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
             element.Click();
         }

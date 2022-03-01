@@ -14,45 +14,46 @@ namespace selenium
             string flow = "displayStandard";
             string size = "singleImage";
 
-            while (input != "quit")
-            {
-                p.userPrompt(environment, browser, network, flow);
+            // while (input != "quit")
+            // {
+            //     p.userPrompt(environment, browser, network, flow);
 
-                input = Console.ReadLine();
-                if (input.StartsWith("environment"))
-                {
-                    environment = input.Substring(input.IndexOf("=") + 1);
-                }
-                else if (input.StartsWith("browser"))
-                {
-                    browser = input.Substring(input.IndexOf("=") + 1);
-                }
-                else if (input.StartsWith("network"))
-                {
-                    network = input.Substring(input.IndexOf("=") + 1);
-                }
-                else if (input.StartsWith("flow"))
-                {
-                    flow = input.Substring(input.IndexOf("=") + 1);
-                }
-                else if (input.StartsWith("size"))
-                {
-                    size = input.Substring(input.IndexOf("=") + 1);
-                }
-                else if (input == "run")
-                {
-                    p.run(browser, environment, network, flow, size);
-                    break;
-                }
-                else if (input == "quit")
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("bad command");
-                    }
-                }
+            //     input = Console.ReadLine();
+            //     if (input.StartsWith("environment"))
+            //     {
+            //         environment = input.Substring(input.IndexOf("=") + 1);
+            //     }
+            //     else if (input.StartsWith("browser"))
+            //     {
+            //         browser = input.Substring(input.IndexOf("=") + 1);
+            //     }
+            //     else if (input.StartsWith("network"))
+            //     {
+            //         network = input.Substring(input.IndexOf("=") + 1);
+            //     }
+            //     else if (input.StartsWith("flow"))
+            //     {
+            //         flow = input.Substring(input.IndexOf("=") + 1);
+            //     }
+            //     else if (input.StartsWith("size"))
+            //     {
+            //         size = input.Substring(input.IndexOf("=") + 1);
+            //     }
+            //     else if (input == "run")
+            //     {
+            //         p.run(browser, environment, network, flow, size);
+            //         break;
+            //     }
+            //     else if (input == "quit")
+            //     {
+            //         break;
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("bad command");
+            //         }
+            //     }
+            p.run(browser, environment, network, flow, size);
             }
 
         public void userPrompt(string environment, string browser, string network, string flow)
@@ -82,11 +83,8 @@ namespace selenium
             }
 
             bInstructions.goToCanvas(driver, environment, flow, network, size);
-            add.addLogo(driver);
-            add.addImage(driver);
-            add.addText(driver);
-            bInstructions.editSelectedTextElement(driver);
-            driver.Quit();
+            add.addDisclaimer(driver);
+            bInstructions.addAnimations(driver);
         }
     }
 }

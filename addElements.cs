@@ -76,5 +76,71 @@ namespace selenium
             actions.SendKeys(Keys.Escape)
             .Perform();
         }
+
+        public void addButton(WebDriver driver)
+        {
+            IWebElement addElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[1]/i",10);
+            instructions.clickElementWhenClickable(driver, addElement);
+
+            IWebElement buttonElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div/div/div[4]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, buttonElement);
+
+            IWebElement button=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[1]/div[1]/div[2]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, button);
+
+            IWebElement add=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[3]/button[2]",10);
+            instructions.clickElementWhenClickable(driver, add);
+
+            Thread.Sleep(2000);
+            Actions actions = new Actions(driver);
+            actions.SendKeys(Keys.Escape)
+            .Perform();
+        }
+
+        public void addShape(WebDriver driver)
+        {
+            IWebElement addElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[1]/i",10);
+            instructions.clickElementWhenClickable(driver, addElement);
+
+            IWebElement shapeElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div/div/div[5]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, shapeElement);
+
+            IWebElement publicShape=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/button[2]",10);
+            instructions.clickElementWhenClickable(driver, publicShape);
+            
+            Thread.Sleep(1000);
+            IWebElement rectangle=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[1]/div[1]/div/div[1]/div[3]/div[2]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, rectangle);
+
+            IWebElement add=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[3]/button[2]",10);
+            instructions.clickElementWhenClickable(driver, add);
+        }
+
+        public void addVideo(WebDriver driver)
+        {
+            IWebElement addElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[1]/i",10);
+            instructions.clickElementWhenClickable(driver, addElement);
+
+            IWebElement videoElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div/div/div[6]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, videoElement);
+
+            IWebElement dropArea=instructions.getElementAfterWaitID(driver,"ngf-upload-video-browse-files-link",10);
+            dropArea.SendKeys("/Users/mikemccormick/Documents/Resources/videos/small.mp4");
+
+            IWebElement video=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div[2]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, video);
+
+            IWebElement add=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[3]/button[2]",10);
+            instructions.clickElementWhenClickable(driver, add);
+        }
+
+        public void addDisclaimer(WebDriver driver)
+        {
+            IWebElement addElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[1]/i",10);
+            instructions.clickElementWhenClickable(driver, addElement);
+
+            IWebElement disclaimerElement=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div/div/div[7]/div/h5",10);
+            instructions.clickElementWhenClickable(driver, disclaimerElement);
+        }
     }
 } 
