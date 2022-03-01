@@ -174,10 +174,8 @@ namespace selenium
 
             if(repeat<0)
             {
-                Console.WriteLine("1 " + repeat);
                 //convert negative int to positive
                 repeat=0-repeat;
-                Console.WriteLine("2 " + repeat);
                 for(int i = 0; i <= repeat;i++)
                 {
                     repeatDown.Click();
