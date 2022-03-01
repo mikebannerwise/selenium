@@ -202,43 +202,5 @@ namespace selenium
                 socialDynamicFlow(driver, network, size);
             }
         }
-        public void addAnimations(WebDriver driver)
-        { 
-            IWebElement enterAnimations=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[5]/div[1]/div[2]/div/div[2]/div[2]/div[1]/div/div/div/div[2]",10);
-            IWebElement middleAnimations=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[1]/div[3]/div/div[5]/div[1]/div[2]/div/div[2]/div[2]/div[1]/div/div/div/div[3]",10);
-
-            instructions.clickElementWhenClickable(driver, middleAnimations);
-
-            IWebElement rotate=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[1]",10);
-            IWebElement scaleUp=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[2]",10);
-            IWebElement scaleDown=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[3]",10);
-            IWebElement flipX=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[4]",10);
-            IWebElement none=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[5]",10);
-            IWebElement flipY=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[6]",10);
-            IWebElement fade=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[7]",10);
-            IWebElement move=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[1]/div/i[8]",10);
-
-            IWebElement fromTopLeft=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[1]",10);
-            IWebElement fromTop=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[2]",10);
-            IWebElement fromTopRight=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[3]",10);
-            IWebElement fromLeft=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[4]",10);
-            IWebElement none2=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[5]",10);
-            IWebElement fromRight=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[6]",10);
-            IWebElement fromBottomLeft=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[7]",10);
-            IWebElement fromBottom=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[8]",10);
-            IWebElement fromBottomRight=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[2]/div/i[9]",10);
-
-            IWebElement normalIn=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[1]",10);
-            IWebElement normalOut=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[2]",10);
-            IWebElement elasticOut=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[3]",10);
-            IWebElement bounceOut=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[4]",10);
-            IWebElement none3=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[5]",10);
-            IWebElement backIn=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[6]",10);
-            IWebElement backOut=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[6]",10);
-            IWebElement circularIn=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[7]",10);
-            IWebElement circularOut=instructions.getElementAfterWaitXP(driver,"/html/body/div[6]/div[3]/div/i[8]",10);
-
-            //instructions.clickElementWhenClickable(driver, rotate);
-        }
     }
 }

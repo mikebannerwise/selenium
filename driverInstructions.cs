@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Interactions;
 
 namespace selenium
 {
@@ -51,6 +52,13 @@ namespace selenium
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeout);
             IWebElement element = driver.FindElement(By.Id(id));
             return element;
+        }
+
+        public void pressEsc(WebDriver driver)
+        {
+            Actions actions = new Actions(driver);
+            actions.SendKeys(Keys.Escape)
+            .Perform();
         }
     }
 }

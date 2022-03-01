@@ -14,7 +14,7 @@ namespace selenium
             string flow = "displayStandard";
             string size = "singleImage";
 
-            // while (input != "quit")
+            // while (input != "quit" || input != "q")
             // {
             //     p.userPrompt(environment, browser, network, flow);
 
@@ -68,7 +68,8 @@ namespace selenium
             WebDriver driver;
             driverInstructions dInstructions = new driverInstructions();
             browserInstructions bInstructions = new browserInstructions();
-            addElements add = new addElements();
+            addElements addE = new addElements();
+            addAnimations addA = new addAnimations();
             if (browser == "firefox" || browser == "ff")
             {
                 driver = dInstructions.setUpFirefox();
@@ -83,8 +84,9 @@ namespace selenium
             }
 
             bInstructions.goToCanvas(driver, environment, flow, network, size);
-            add.addDisclaimer(driver);
-            bInstructions.addAnimations(driver);
+            addE.addShape(driver);
+            addA.loadMiddleAnimations(driver);
+            addA.applyMiddleAnimations(driver, "scaledown",-1);
         }
     }
 }

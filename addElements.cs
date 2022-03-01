@@ -108,7 +108,7 @@ namespace selenium
             IWebElement publicShape=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/button[2]",10);
             instructions.clickElementWhenClickable(driver, publicShape);
             
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             IWebElement rectangle=instructions.getElementAfterWaitXP(driver,"/html/body/div[1]/div[2]/div/div/div[2]/div[1]/div[1]/div/div[1]/div[3]/div[2]/div/h5",10);
             instructions.clickElementWhenClickable(driver, rectangle);
 
