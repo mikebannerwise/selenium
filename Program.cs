@@ -49,7 +49,7 @@ namespace selenium
             //         break;
             //     }
             //     else
-            //     {
+            ////     {
             //         Console.WriteLine("bad command");
             //         }
             //     }
